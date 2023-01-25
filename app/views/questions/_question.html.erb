@@ -1,0 +1,21 @@
+<% hidden_flag = question.hidden? ? 'hidden' : '' %>
+
+<div class="mb-sm <%= hidden_flag %>">
+  <%= question.body %>
+</div>
+
+<div class="text-sm question-footer">
+  <div class="text-grey">
+    <%= l(question.created_at, format: :short) %>
+  </div>
+
+  <div>
+    <%= link_to fa_icon('pencil'), edit_question_path(question),
+      title: 'Изменить вопрос' %>
+    <%= button_to fa_icon('trash-o'), question_path(question),
+      method: :delete, title: 'Удалить вопрос' %>
+    <% unless question.hidden? %>
+      <%= button_to fa_icon('eye-slash'), hide_question_path(question), title: 'Спрятать вопрос', method: :put %>
+    <% end %>
+  </div>
+</div>

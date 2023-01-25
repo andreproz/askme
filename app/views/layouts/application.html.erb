@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Askme</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <% if flash[:notice].present? %>
+        <p class="mb mt message message-notice"><%= flash[:notice] %></p>
+      <% end %>
+
+      <%= yield %>
+    </div>
+  </body>
+</html>
