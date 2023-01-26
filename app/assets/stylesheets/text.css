@@ -30,3 +30,7 @@ a, button {
 .hidden {
   opacity: 50%;
 }
+
+.text-bold {
+  font-weight: bold;
+}

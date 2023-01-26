@@ -50,6 +50,8 @@ gem "bootsnap", require: false
 
 gem "font-awesome-rails"
 
+gem 'bcrypt'
+
 group :production do
   gem 'pg'
 end
