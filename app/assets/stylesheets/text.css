@@ -38,3 +38,7 @@ a, button {
 .text-red {
   color: #d00000;
 }
+
+.question-body-text {
+  white-space: pre-line;
+}
