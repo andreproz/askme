@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="title-lg mb">Новый вопрос</h2>
+  <h2 class="title-lg mb-sm">Новый вопрос</h2>
 
-  <%= render 'form', question: @question %>
+  <p class="mb">для <%= link_to "@#{@question.user.nickname}", user_path(@question.user) %></p>
 </div>

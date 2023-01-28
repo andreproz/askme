@@ -9,6 +9,8 @@ class User < ApplicationRecord
   
   validates :head_color, format: { with: /\A#\h{3}{1,2}\z/ }
   
+  has_many :questions, dependent: :delete_all
+  
   def downcase_nickname
     nickname.downcase!
   end
