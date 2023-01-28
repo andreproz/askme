@@ -10,14 +10,15 @@
   <p class="text-bold mt mb-lg">@<%= @user.nickname %></p>
 </div>
 
-<% if @questions.any? %>
-  <div class="container">
-    <%= link_to 'Спроси меня', new_question_path(user_id: @user.id), class: 'button button-yellow' %>
-    <div class="mt">
-      <%= render partial: 'questions/form', locals: {question: @question} %>
-    </div>
-  </div>
 
+<div class="container">
+  <%= link_to 'Спроси меня', new_question_path(user_id: @user.id), class: 'button button-yellow' %>
+  <div class="mt">
+    <%= render partial: 'questions/form', locals: {question: @question} %>
+  </div>
+</div>
+  
+<% if @questions.any? %>
   <div class="container mt-sm">
     <h2 class="title-lg">
       <%= @questions.count %>

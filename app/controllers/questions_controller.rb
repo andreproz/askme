@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
     @question = Question.create(question_params)
 
     if @question.save
-      redirect_to user_path(question.user), notice: 'Новый вопрос создан!'
+      redirect_to user_path(@question.user), notice: 'Новый вопрос создан!'
     else
       flash.now[:alert] = 'Вопрос не должен быть пустым, а его максимальная длина - 280 символов!'
       render :new
