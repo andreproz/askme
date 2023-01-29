@@ -11,6 +11,9 @@ class User < ApplicationRecord
   
   validates :head_color, format: { with: /\A#\h{3}{1,2}\z/ }
   
+  include Gravtastic
+  gravtastic(secure: true, filetype: :png, size: 100, default: 'retro')
+  
   private
   
   def downcase_user_params
