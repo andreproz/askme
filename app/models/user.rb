@@ -1,7 +1,9 @@
 class User < ApplicationRecord
   has_secure_password
   
-  before_save :downcase_nickname
+  has_many :questions, dependent: :delete_all
+  
+  before_validation :downcase_user_params
   
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   
@@ -9,9 +11,10 @@ class User < ApplicationRecord
   
   validates :head_color, format: { with: /\A#\h{3}{1,2}\z/ }
   
-  has_many :questions, dependent: :delete_all
+  private
   
-  def downcase_nickname
-    nickname.downcase!
+  def downcase_user_params
+    nickname&.downcase!
+    email&.downcase!
   end
 end
