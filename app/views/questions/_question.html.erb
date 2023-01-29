@@ -1,5 +1,10 @@
 <% hidden_flag = question.hidden? ? 'hidden' : '' %>
 
+<div class="mb-sm">
+  <p>Автор вопроса:</p>
+  <%= question_author(question) %>
+</div>
+
 <div class="mb-sm <%= hidden_flag %> question-body-text">
   <%= question.body %>
 </div>
