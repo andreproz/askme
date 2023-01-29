@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  include Gravtastic
+  gravtastic(secure: true, filetype: :png, size: 100, default: 'retro')
+  
   has_secure_password
   
   has_many :questions, dependent: :delete_all
@@ -11,8 +14,9 @@ class User < ApplicationRecord
   
   validates :head_color, format: { with: /\A#\h{3}{1,2}\z/ }
   
-  include Gravtastic
-  gravtastic(secure: true, filetype: :png, size: 100, default: 'retro')
+  def to_param
+    nickname
+  end  
   
   private
   
