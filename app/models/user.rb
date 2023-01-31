@@ -4,7 +4,7 @@ class User < ApplicationRecord
   
   has_secure_password
   
-  has_many :questions, dependent: :delete_all
+  has_many :questions, dependent: :destroy
   
   before_validation :downcase_user_params
   
