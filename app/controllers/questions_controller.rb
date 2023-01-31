@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
     @question.author = current_user
 
     if @question.save
-      redirect_to user_path(@question.user), notice: 'Новый вопрос создан!'
+      redirect_to user_path(@question.user.nickname), notice: 'Новый вопрос создан!'
     else
       flash.now[:alert] = 'Вопрос не должен быть пустым, а его максимальная длина - 280 символов!'
       render :new
@@ -21,14 +21,14 @@ class QuestionsController < ApplicationController
 
     @question.update(question_params)
 
-    redirect_to user_path(@question.user), notice: 'Сохранили вопрос!'
+    redirect_to user_path(@question.user.nickname), notice: 'Сохранили вопрос!'
   end
 
   def destroy
     user = @question.user
     @question.destroy
 
-    redirect_to user_path(user), notice: 'Вопрос удалён!'
+    redirect_to user_path(user.nickname), notice: 'Вопрос удалён!'
   end
 
   def show
@@ -41,7 +41,7 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    @user = User.find(params[:user_id])
+    @user = User.find_by!(nickname: params[:user_nickname])
     @question = Question.new(user: @user)
   end
 

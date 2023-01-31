@@ -2,9 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[edit update destroy show]
   before_action :authorize_user, only: %i[edit update destroy]
 
-  
   def create
-  
     @user = User.new(user_params)
     
     if @user.save
@@ -17,8 +15,6 @@ class UsersController < ApplicationController
   end
 
   def new
-    session[:current_time] = Time.now
-    
     @user = User.new
   end
   

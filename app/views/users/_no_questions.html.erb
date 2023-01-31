@@ -7,6 +7,6 @@
     <%= fa_stacked_icon 'question', base: 'circle-o' %>
   </div>
 
-  <%= link_to "Дай, спрошу!", new_question_path(user_id: user.id),
+  <%= link_to "Дай, спрошу!", new_question_path(user_nickname: @user.nickname),
     class: 'button button-main' %>
 </div>

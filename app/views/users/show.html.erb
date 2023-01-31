@@ -7,7 +7,7 @@
   
   <% if current_user == @user %>
     <p class="mt mb-lg">
-      <%= link_to fa_icon('pencil'), edit_user_path(@user) %>
+      <%= link_to fa_icon('pencil'), edit_user_path(@user.nickname) %>
     </p>
   <% end %>
 
@@ -16,7 +16,7 @@
 
 
 <div class="container">
-  <%= link_to 'Спроси меня', new_question_path(user_id: @user.id), class: 'button button-yellow' %>
+  <%= link_to 'Спроси меня', new_question_path(user_nickname: @user.nickname), class: 'button button-yellow' %>
   <div class="mt">
     <%= render partial: 'questions/form', locals: {question: @question} %>
   </div>
